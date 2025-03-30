@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body class="bg-gray-100">
+    <main class="grid grid-cols-[240px,_1fr]">
+        <!-- sidebar section -->
+        <div class="bg-white">
+            <div class="overflow-y-scroll sticky h-[calc(100vh-32px-48px)]">
+                <!-- logo -->
+                <div class="border-b mb-4 border-stone-300 p-3">
+                    <div class="text-center">
+                        <span class="text-sm font-bold block">Company Logo</span>
+                        <span class="text-xs block text-stone-500">phrase</span>
+                    </div>
+                </div>
+                <!-- sidebar items -->
+                <div class="space-y-3 px-3">
+                    <button class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm 
+                            transition-[box-shadow,_background-color,_color] bg-gray-300 text-stone-950 shadow">
+                        <i class="fas fa-home"></i> Dashboard
+                    </button>
+                    <button class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm 
+                    transition-[box-shadow,_background-color,_color]
+                    hover:bg-gray-300 bg-transparent text-gray-500 shadow-none">
+                        <i class="fas fa-user"></i> My Profile
+                    </button>
+                    <button class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm 
+                    transition-[box-shadow,_background-color,_color]
+                    hover:bg-gray-300 bg-transparent text-gray-500 shadow-none">
+                        <i class="fas fa-briefcase"></i> Manage Practices
+                    </button>
+                    <button class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm 
+                    transition-[box-shadow,_background-color,_color]
+                    hover:bg-gray-300 bg-transparent text-gray-500 shadow-none">
+                        <i class="fas fa-note-sticky"></i> Logs
+                    </button>
+                </div>
+            
+            </div>
+        </div>
+        <!-- right section -->
+        <div class="rounded-lg pb-4 h-[100vh]">
+
+            <!-- topbar Section -->
+            <div class="border-b mb-4 pb-3 border-stone-100 p-5 bg-white flex justify-between items-center">
+                <h1 class="text-sm font-semibold">Dashboard</h1>
+            
+                <div class="relative flex items-center space-x-5 pr-5">
+                    <div class="relative cursor-pointer">
+                        <i class="fas fa-bell text-gray-500 text-sm notification-bell"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">3</span>
+            
+                        <div id="notification-dropdown" class="absolute right-0 mt-5 w-72 bg-white rounded shadow-md hidden z-20">
+                            <div class="p-4">
+                                <div class="mb-5">
+                                    <h2 class="text-sm font-semibold">Notifications</h2>
+                                    <p class="text-xs">You have 2 unread messages</p>
+                                </div>
+                                <div class="space-y-3" id="notification-list">
+                                
+                                    <div class="flex items-start justify-between space-x-3">
+                                        <div class="flex items-start space-x-3">
+                                            <img src="https://i.pravatar.cc/40" alt="User Avatar" class="w-8 h-8 rounded-full border border-gray-300">
+                                            <div>
+                                                <p class="text-sm">New Registration</p>
+                                                <p class="text-xs">Wandumi Sichali</p>
+                                                <p class="text-gray-300">
+                                                    <i class="fa-regular fa-clock text-gray-500 text-xs pr-2"></i>7 Oct 2022
+                                                </p>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="flex items-center">
+                                            <i class="fas fa-trash text-gray-300 text-xl cursor-pointer"></i>
+                                        </div>
+                                    </div>
+        
+                                    <div class="flex items-start justify-between space-x-3">
+                                        <div class="flex items-start space-x-3">
+                                            <img src="https://i.pravatar.cc/40" alt="User Avatar" class="w-8 h-8 rounded-full border border-gray-300">
+                                            <div>
+                                                <p class="text-sm">New Constent Added</p>
+                                                <p class="text-xs">Munandi Sichali</p>
+                                                <p class="text-gray-300">
+                                                    <i class="fa-regular fa-clock text-gray-500 text-xs pr-2"></i>7 Oct 2022
+                                                </p>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="flex items-center">
+                                            <i class="fas fa-trash text-gray-300 text-xl cursor-pointer"></i>
+                                        </div>
+                                    </div>
+                                   
+        
+                                </div>
+                                <button id="clear-notifications" class="block w-full mt-3 py-2 text-xs text-center text-gray-600 hover:bg-gray-100 rounded">Clear All</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="relative">
+                        <button id="profile-btn" class="flex items-center space-x-2 cursor-pointer">
+                            <img src="https://i.pravatar.cc/40" alt="User Avatar" class="w-8 h-8 rounded-full border border-gray-300">
+                            <div>
+                                <p class="text-sm font-medium text-gray-700">Wandumi Sichali</p>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                        </button>
+            
+                        <div id="profile-dropdown" class="absolute right-0 mt-5 w-40 bg-white rounded shadow-md hidden z-10">
+                            <div class="p-4">
+                                <p class="text-sm font-medium">Wandumi Sichali</p>
+                                <p class="text-xs text-gray-500 mb-2">munandih@gmail.com</p>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Notification section -->
+            <div class="px-5 mb-5 rounded">
+                <div>
+                    <h2 class="text-sm font-bold block">Welcome Wandumi</h2>
+                    <p class="text-xs block text-stone-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quas?</p>
+                </div>
+            </div>
+
+            <!-- Grids -->
+            <div class="px-5 mb-4 grid gap-4 grid-cols-12">
+                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+                    <div class="p-5">
+                        <h2 class="text-sm">Total Practice</h2>
+                        <p class="text-xs flex items-center">
+                            <i class="fas fa-arrow-up text-green-500 p-2 rounded-full" style="background-color: #a39e9e01;"></i>
+                            <span class="ml-2">+15%</span>
+                        </p>
+                        <p class="text-lg font-[700]">11</p>
+                    </div>
+                    <div class="p-5 flex items-center justify-center">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full" style="background-color: #c2dee3;">
+                            <i class="fas fa-plug text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+                    <div class="p-5">
+                        <h2 class="text-sm">Total Subscribers</h2>
+                        <p class="text-xs flex items-center">
+                            <i class="fas fa-arrow-up text-green-500 p-2 rounded-full" style="background-color: #a39e9e01;"></i>
+                            <span class="ml-2">+15%</span>
+                        </p>
+                        <p class="text-lg font-[700]">261</p>
+                    </div>
+                    <div class="p-5 flex items-center justify-center">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full" style="background-color: #c2dee3;">
+                            <i class="fas fa-plug text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+                    <div class="p-5">
+                        <h2 class="text-sm">Total Treatments</h2>
+                        <p class="text-xs flex items-center">
+                            <i class="fas fa-arrow-up text-green-500 p-2 rounded-full" style="background-color: #a39e9e01;"></i>
+                            <span class="ml-2">+15%</span>
+                        </p>
+                        <p class="text-lg font-[700]">135</p>
+                    </div>
+                    <div class="p-5 flex items-center justify-center">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full" style="background-color: #c2dee3;">
+                            <i class="fas fa-plug text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+                    <div class="p-5">
+                        <h2 class="text-sm">Total Consents </h2>
+                        <p class="text-xs flex items-center">
+                            <i class="fas fa-arrow-up text-green-500 p-2 rounded-full" style="background-color: #a39e9e01;"></i>
+                            <span class="ml-2">+15%</span>
+                        </p>
+                        <p class="text-lg font-[700]">135</p>
+                    </div>
+                    <div class="p-5 flex items-center justify-center">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full" style="background-color: #c2dee3;">
+                            <i class="fas fa-plug text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+                    <div class="p-5">
+                        <h2 class="text-sm">Total Consents Signed</h2>
+                        <p class="text-xs flex items-center">
+                            <i class="fas fa-arrow-up text-green-500 p-2 rounded-full" style="background-color: #a39e9e01;"></i>
+                            <span class="ml-2">+15%</span>
+                        </p>
+                        <p class="text-lg font-[700]">2159</p>
+                    </div>
+                    <div class="p-5 flex items-center justify-center">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full" style="background-color: #c2dee3;">
+                            <i class="fas fa-plug text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+                    <div class="p-5">
+                        <h2 class="text-sm">Total Fact sheets read</h2>
+                        <p class="text-xs flex items-center">
+                            <i class="fas fa-arrow-up text-green-500 p-2 rounded-full" style="background-color: #a39e9e01;"></i>
+                            <span class="ml-2">+15%</span>
+                        </p>
+                        <p class="text-lg font-[700]">2159</p>
+                    </div>
+                    <div class="p-5 flex items-center justify-center">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full" style="background-color: #c2dee3;">
+                            <i class="fas fa-plug text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid bar -->
+            <div class="px-5 mb-4 grid grid-cols-12">
+                <div class="flex items-center justify-center col-span-4 bg-white rounded-lg p-5">
+                    <div class="flex items-center justify-center pr-5">
+                        <div class="relative w-12 h-12">
+                            <svg class="w-full h-full" viewBox="0 0 36 36">
+                                <circle class="text-gray-200 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"></circle>
+                                <circle class="text-orange-500 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"
+                                        stroke-dasharray="100" stroke-dashoffset="75" stroke-linecap="round"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm">24%</p>
+                        <p class="text-xs">Pending</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center col-span-4 bg-white rounded-lg p-5">
+                    <div class="flex items-center justify-center pr-5">
+                        <div class="relative w-12 h-12">
+                            <svg class="w-full h-full" viewBox="0 0 36 36">
+                                <circle class="text-gray-200 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"></circle>
+                                <circle class="text-green-500 stroke-current transform rotate-270" stroke-width="3" cx="18" cy="18" r="16" fill="none"
+                                        stroke-dasharray="100" stroke-dashoffset="44" stroke-linecap="round"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm">56%</p>
+                        <p class="text-xs">Pending</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center col-span-4 bg-white rounded-lg p-5">
+                    <div class="flex items-center justify-center pr-5">
+                        <div class="relative w-12 h-12">
+                            <svg class="w-full h-full" viewBox="0 0 36 36">
+                                <circle class="text-gray-200 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"></circle>
+                                <circle class="text-blue-500 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"
+                                        stroke-dasharray="60" stroke-dashoffset="1" stroke-linecap="round"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="text-sm">20%</p>
+                        <p class="text-xs">Pending</p>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Table -->
+            <div class="px-5 mb-4">
+                <h2 class="col-span-12 p-4 font-semibold text-sm bg-white rounded-lg">Newest Practices</h2>
+                <table class="w-full text-left table-auto bg-white">
+        
+                    <tbody>
+                        <tr class="bg-gray-200 rounded m-5">
+                            <td class="text-sm py-2 px-4">Practice Name</td>
+                            <td class="text-sm py-2 px-4">Tel No</td>
+                            <td class="text-sm py-2 px-4">Email</td>
+                            <td class="text-sm py-2 px-4">Date Created</td>
+                            <td class="text-sm py-2 px-4">Status</td>
+                            <td class="text-sm py-2 px-4">Actions</td>
+                        </tr>
+                        <tr class="mb-10">
+                            <td class="text-sm py-2 px-4">Cape Fertility Clinic</td>
+                            <td class="text-sm py-2 px-4">+21 794 3956</td>
+                            <td class="text-sm py-2 px-4">info@capefertility.co.za</td>
+                            <td class="text-sm py-2 px-4">2023/10/26</td>
+                            <td class="text-sm py-2 px-4 flex items-center">
+                                <label class="relative inline-flex items-center cursor-pointer mr-2">
+                                    <input type="checkbox" value="" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 
+                                                peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full 
+                                                peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] 
+                                                after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                                Active
+                            </td>
+                            
+                            <td class="text-sm py-2 px-4 relative">
+                                
+                                    <button class="mr-1">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    /
+                                    <button>
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="text-sm py-2 px-4">Cape Fertility Clinic</td>
+                            <td class="text-sm py-2 px-4">+21 794 3956</td>
+                            <td class="text-sm py-2 px-4">info@capefertility.co.za</td>
+                            <td class="text-sm py-2 px-4">2023/10/26</td>
+                            <td class="text-sm py-2 px-4 flex items-center">
+                                <label class="relative inline-flex items-center cursor-pointer mr-2">
+                                    <input type="checkbox" value="" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 
+                                                peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full 
+                                                peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] 
+                                                after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                                Active
+                            </td>
+                            <td class="text-sm py-2 px-4 relative">
+                                
+                                    <button class="mr-1">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    /
+                                    <button>
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="text-sm py-2 px-4">Cape Fertility Clinic</td>
+                            <td class="text-sm py-2 px-4">+21 794 3956</td>
+                            <td class="text-sm py-2 px-4">info@capefertility.co.za</td>
+                            <td class="text-sm py-2 px-4">2023/10/26</td>
+                            <td class="text-sm py-2 px-4 flex items-center">
+                                <label class="relative inline-flex items-center cursor-pointer mr-2">
+                                    <input type="checkbox" value="" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 
+                                                peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full 
+                                                peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] 
+                                                after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                                Active
+                            </td>
+                            <td class="text-sm py-2 px-4 relative">
+                                
+                                    <button class="mr-1">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    /
+                                    <button>
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="text-sm py-2 px-4 pr-8 text-end">
+                                See All <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileBtn = document.getElementById('profile-btn');
+            const profileDropdown = document.getElementById('profile-dropdown');
+    
+            profileBtn.addEventListener('click', function(event) {
+                event.stopPropagation();
+                profileDropdown.classList.toggle('hidden');
+                if (!notificationDropdown.classList.contains('hidden')){
+                    notificationDropdown.classList.add('hidden');
+                }
+            });
+    
+            // Notification Dropdown
+            const notificationBell = document.querySelector('.notification-bell').parentElement;
+            const notificationDropdown = document.getElementById('notification-dropdown');
+         
+            notificationBell.addEventListener('click', function(event) {
+                event.stopPropagation();
+                notificationDropdown.classList.toggle('hidden');
+                if (!profileDropdown.classList.contains('hidden')) {
+                    profileDropdown.classList.add('hidden');
+                }
+            });
+
+            document.addEventListener('click', function() {
+                if (!profileDropdown.classList.contains('hidden')) {
+                    profileDropdown.classList.add('hidden');
+                }
+                if (!notificationDropdown.classList.contains('hidden')) {
+                    notificationDropdown.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
