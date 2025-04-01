@@ -1,69 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Mobile Menu Example</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+   
 </head>
-<body class="bg-gray-100">
-    <main class="grid grid-cols-[240px,_1fr]">
-        <!-- sidebar section -->
-        <div class="bg-white">
-            <div class="overflow-y-scroll sticky h-[calc(100vh-32px-48px)]">
-                <!-- logo -->
-                <div class="border-b mb-4 border-stone-300 p-3">
-                    <div class="text-center">
-                        <span class="text-sm font-bold block">Company Logo</span>
-                        <span class="text-xs block text-stone-500">phrase</span>
-                    </div>
-                </div>
-                <!-- sidebar items -->
-                <div class="space-y-3 px-3">
-                    <button class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm 
-                            transition-[box-shadow,_background-color,_color] bg-gray-300 text-stone-950 shadow">
-                        <i class="fas fa-home"></i> Dashboard
-                    </button>
-                    <button class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm 
-                    transition-[box-shadow,_background-color,_color]
-                    hover:bg-gray-300 bg-transparent text-gray-500 shadow-none">
-                        <i class="fas fa-user"></i> My Profile
-                    </button>
-                    <button class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm 
-                    transition-[box-shadow,_background-color,_color]
-                    hover:bg-gray-300 bg-transparent text-gray-500 shadow-none">
-                        <i class="fas fa-briefcase"></i> Manage Practices
-                    </button>
-                    <button class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm 
-                    transition-[box-shadow,_background-color,_color]
-                    hover:bg-gray-300 bg-transparent text-gray-500 shadow-none">
-                        <i class="fas fa-note-sticky"></i> Logs
-                    </button>
-                </div>
-            
-            </div>
-        </div>
-        <!-- right section -->
-        <div class="rounded-lg pb-4 h-[100vh]">
 
-            <!-- topbar Section -->
-            <div class="border-b mb-4 pb-3 border-stone-100 p-5 bg-white flex justify-between items-center">
-                <h1 class="text-sm font-semibold">Dashboard</h1>
-            
-                <div class="relative flex items-center space-x-5 pr-5">
+<body class="bg-gray-100">
+    <main class="min-h-screen grid lg:grid-col-[240px,_1fr]">
+
+        <div class="bg-white fixed w-full h-16 z-100 md:hidden" id="mobile-sidebar">
+            <div class="flex justify-between items-center p-4">
+                <button id="mobile-sidebar-toggle" class="p-2 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="text-center">
+                    <span class="text-sm font-bold block">Company Logo</span>
+                </div>
+                <div class="flex items-center space-x-3">
                     <div class="relative cursor-pointer">
                         <i class="fas fa-bell text-gray-500 text-sm notification-bell"></i>
-                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">3</span>
-            
-                        <div id="notification-dropdown" class="absolute right-0 mt-5 w-72 bg-white rounded shadow-md hidden z-20">
+                        <span
+                            class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">3</span>
+
+                        <div id="notification-dropdown"
+                            class="absolute right-0 mt-5 w-72 bg-white rounded shadow-md hidden z-20">
                             <div class="p-4">
                                 <div class="mb-5">
                                     <h2 class="text-sm font-semibold">Notifications</h2>
                                     <p class="text-xs">You have 2 unread messages</p>
                                 </div>
                                 <div class="space-y-3" id="notification-list">
+
+                                    <div class="flex items-start justify-between space-x-3">
+                                        <div class="flex items-start space-x-3">
+                                            <img src="https://i.pravatar.cc/40" alt="User Avatar"
+                                                class="w-8 h-8 rounded-full border border-gray-300">
+                                            <div>
+                                                <p class="text-sm">New Registration</p>
+                                                <p class="text-xs">Wandumi Sichali</p>
+                                                <p class="text-gray-300">
+                                                    <i class="fa-regular fa-clock text-gray-500 text-xs pr-2"></i>7 Oct
+                                                    2022
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <i class="fas fa-trash text-gray-300 text-xl cursor-pointer"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start justify-between space-x-3">
+                                        <div class="flex items-start space-x-3">
+                                            <img src="https://i.pravatar.cc/40" alt="User Avatar"
+                                                class="w-8 h-8 rounded-full border border-gray-300">
+                                            <div>
+                                                <p class="text-sm">New Constent Added</p>
+                                                <p class="text-xs">Munandi Sichali</p>
+                                                <p class="text-gray-300">
+                                                    <i class="fa-regular fa-clock text-gray-500 text-xs pr-2"></i>7 Oct
+                                                    2022
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <i class="fas fa-trash text-gray-300 text-xl cursor-pointer"></i>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <button id="clear-notifications"
+                                    class="block w-full mt-3 py-2 text-xs text-center text-gray-600 hover:bg-gray-100 rounded">Clear
+                                    All</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <button id="profile-btn" class="flex items-center space-x-2 cursor-pointer">
+                            <img src="https://i.pravatar.cc/40" alt="User Avatar"
+                                class="w-8 h-8 rounded-full border border-gray-300">
+                        </button>
+
+                        <div id="profile-dropdown"
+                            class="absolute right-0 mt-5 w-40 bg-white rounded shadow-md hidden z-10">
+                            <div class="p-4">
+                                <p class="text-sm font-medium">Wandumi Sichali</p>
+                                <p class="text-xs text-gray-500 mb-2">munandih@gmail.com</p>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white w-full h-screen z-50 md:z-0 transform -translate-x-full lg:translate-x-0 
+                    transition-transform duration-300 fixed top-0 left-0 lg:w-64" id="sidebar">
+            <div class="overflow-y-auto sticky top-0 h-full hide-scrollbar">
+                <div class="mb-4 border-stone-300 p-3">
+                    <div class="text-center">
+                        <span class="text-sm font-bold block text-center p-2">Company Logo</span>
+                    </div>
+                </div>
+                <div class="space-y-3 px-3">
+                    <button
+                        class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm transition-[box-shadow,_background-color,_color] bg-gray-300 text-stone-950 shadow">
+                        <i class="fas fa-home"></i> Dashboard
+                    </button>
+                    <button
+                        class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm transition-[box-shadow,_background-color,_color] hover:bg-gray-300 bg-transparent text-gray-500 shadow-none">
+                        <i class="fas fa-user"></i> My Profile
+                    </button>
+                    <button
+                        class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm transition-[box-shadow,_background-color,_color] hover:bg-gray-300 bg-transparent text-gray-500 shadow-none">
+                        <i class="fas fa-briefcase"></i> Manage Practices
+                    </button>
+                    <button
+                        class="flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 text-sm transition-[box-shadow,_background-color,_color] hover:bg-gray-300 bg-transparent text-gray-500 shadow-none">
+                        <i class="fas fa-note-sticky"></i> Logs
+                    </button>
+                </div>
+
+            </div>
+            <button id="sidebar-toggle" class="absolute top-4 right-4 md:hidden p-2 focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="lg:ml-[240px] flex-1 bg-gray-100  overflow-x-auto ">
+            
+            <div class="hidden md:flex lg:flex xl:flex border-b border-stone-100 py-3 pl-5 bg-white justify-between items-center">
+                <h1 class="text-sm font-semibold pl-5">Dashboard</h1>
+            
+                <div class="relative flex items-center space-x-5 pr-5">
+                    <div class="relative cursor-pointer">
+                        <i class="fas fa-bell text-gray-500 text-sm notification-bell-desktop"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">3</span>
+            
+                        <div id="notification-dropdown-desktop" class="absolute right-0 mt-5 w-72 bg-white rounded shadow-md hidden z-20">
+                            <div class="p-4">
+                                <div class="mb-5">
+                                    <h2 class="text-sm font-semibold">Notifications</h2>
+                                    <p class="text-xs">You have 2 unread messages</p>
+                                </div>
+                                <div class="space-y-3" id="notification-list-desktop">
                                 
                                     <div class="flex items-start justify-between space-x-3">
                                         <div class="flex items-start space-x-3">
@@ -107,15 +196,15 @@
                     </div>
             
                     <div class="relative">
-                        <button id="profile-btn" class="flex items-center space-x-2 cursor-pointer">
+                        <button id="profile-btn-desktop" class="flex items-center space-x-2 cursor-pointer">
                             <img src="https://i.pravatar.cc/40" alt="User Avatar" class="w-8 h-8 rounded-full border border-gray-300">
                             <div>
-                                <p class="text-sm font-medium text-gray-700">Wandumi Sichali</p>
+                                <p class="text-sm font-medium text-gray-700">Wandumi d Sichali</p>
                             </div>
                             <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
                         </button>
             
-                        <div id="profile-dropdown" class="absolute right-0 mt-5 w-40 bg-white rounded shadow-md hidden z-10">
+                        <div id="profile-dropdown-desktop" class="absolute right-0 mt-5 w-40 bg-white rounded shadow-md hidden z-10">
                             <div class="p-4">
                                 <p class="text-sm font-medium">Wandumi Sichali</p>
                                 <p class="text-xs text-gray-500 mb-2">munandih@gmail.com</p>
@@ -127,17 +216,17 @@
                 </div>
             </div>
 
-             <!-- Notification section -->
-            <div class="px-5 mb-5 rounded">
-                <div>
+            <div class="px-10 mb-5 mt-20 md:mt-5 lg:mt-5 rounded">
+                <div class="p-3 lg:p-5 sm:p-3">
                     <h2 class="text-sm font-bold block">Welcome Wandumi</h2>
-                    <p class="text-xs block text-stone-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quas?</p>
+                    <p class="text-xs block text-stone-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quae, quas?</p>
                 </div>
             </div>
 
-            <!-- Grids -->
-            <div class="px-5 mb-4 grid gap-4 grid-cols-12">
-                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+            <div class="px-5 lg:ml-5 mb-4 grid grid-cols-1 lg:pl-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- First Card -->
+                <div class="flex justify-between bg-white rounded-lg">
                     <div class="p-5">
                         <h2 class="text-sm">Total Practice</h2>
                         <p class="text-xs flex items-center">
@@ -152,7 +241,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+            
+                <!-- Second Card -->
+                <div class="flex justify-between bg-white rounded-lg">
                     <div class="p-5">
                         <h2 class="text-sm">Total Subscribers</h2>
                         <p class="text-xs flex items-center">
@@ -167,7 +258,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+            
+                <!-- Third Card -->
+                <div class="flex justify-between bg-white rounded-lg">
                     <div class="p-5">
                         <h2 class="text-sm">Total Treatments</h2>
                         <p class="text-xs flex items-center">
@@ -182,7 +275,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+            
+                <!-- Fourth Card (hidden on small screens) -->
+                <div class="flex justify-between bg-white rounded-lg hidden sm:flex">
                     <div class="p-5">
                         <h2 class="text-sm">Total Consents </h2>
                         <p class="text-xs flex items-center">
@@ -197,7 +292,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+            
+                <!-- Fifth Card (hidden on medium screens) -->
+                <div class="flex justify-between bg-white rounded-lg hidden md:flex">
                     <div class="p-5">
                         <h2 class="text-sm">Total Consents Signed</h2>
                         <p class="text-xs flex items-center">
@@ -212,7 +309,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-between col-span-4 bg-white rounded-lg">
+            
+                <!-- Sixth Card (hidden on large screens) -->
+                <div class="flex justify-between bg-white rounded-lg hidden lg:flex">
                     <div class="p-5">
                         <h2 class="text-sm">Total Fact sheets read</h2>
                         <p class="text-xs flex items-center">
@@ -228,16 +327,17 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Grid bar -->
-            <div class="px-5 mb-4 grid grid-cols-12">
-                <div class="flex items-center justify-center col-span-4 bg-white rounded-lg p-5">
+            
+            <div class="px-5 lg:ml-5 mb-4 grid grid-cols-1 sm:grid-cols-3 md:gap-0 gap-3">
+                <div class="flex items-center justify-center bg-white rounded-lg p-5">
                     <div class="flex items-center justify-center pr-5">
                         <div class="relative w-12 h-12">
                             <svg class="w-full h-full" viewBox="0 0 36 36">
-                                <circle class="text-gray-200 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"></circle>
-                                <circle class="text-orange-500 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"
-                                        stroke-dasharray="100" stroke-dashoffset="75" stroke-linecap="round"></circle>
+                                <circle class="text-gray-200 stroke-current" stroke-width="3" cx="18" cy="18" r="16"
+                                    fill="none"></circle>
+                                <circle class="text-orange-500 stroke-current" stroke-width="3" cx="18" cy="18" r="16"
+                                    fill="none" stroke-dasharray="100" stroke-dashoffset="75"
+                                    stroke-linecap="round"></circle>
                             </svg>
                         </div>
                     </div>
@@ -247,13 +347,15 @@
                     </div>
                 </div>
 
-                <div class="flex items-center justify-center col-span-4 bg-white rounded-lg p-5">
+                <div class="flex items-center justify-center bg-white rounded-lg p-5">
                     <div class="flex items-center justify-center pr-5">
                         <div class="relative w-12 h-12">
                             <svg class="w-full h-full" viewBox="0 0 36 36">
-                                <circle class="text-gray-200 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"></circle>
-                                <circle class="text-green-500 stroke-current transform rotate-270" stroke-width="3" cx="18" cy="18" r="16" fill="none"
-                                        stroke-dasharray="100" stroke-dashoffset="44" stroke-linecap="round"></circle>
+                                <circle class="text-gray-200 stroke-current" stroke-width="3" cx="18" cy="18" r="16"
+                                    fill="none"></circle>
+                                <circle class="text-green-500 stroke-current transform rotate-270" stroke-width="3"
+                                    cx="18" cy="18" r="16" fill="none" stroke-dasharray="100" stroke-dashoffset="44"
+                                    stroke-linecap="round"></circle>
                             </svg>
                         </div>
                     </div>
@@ -263,121 +365,115 @@
                     </div>
                 </div>
 
-                <div class="flex items-center justify-center col-span-4 bg-white rounded-lg p-5">
+                <div class="flex items-center justify-center bg-white rounded-lg p-5">
                     <div class="flex items-center justify-center pr-5">
                         <div class="relative w-12 h-12">
                             <svg class="w-full h-full" viewBox="0 0 36 36">
-                                <circle class="text-gray-200 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"></circle>
-                                <circle class="text-blue-500 stroke-current" stroke-width="3" cx="18" cy="18" r="16" fill="none"
-                                        stroke-dasharray="60" stroke-dashoffset="1" stroke-linecap="round"></circle>
+                                <circle class="text-gray-200 stroke-current" stroke-width="3" cx="18" cy="18
+                                r="16" fill="none"></circle>
+                                <circle class="text-blue-500 stroke-current" stroke-width="3" cx="18" cy="18" r="16"
+                                    fill="none" stroke-dasharray="60" stroke-dashoffset="1"
+                                    stroke-linecap="round"></circle>
                             </svg>
                         </div>
                     </div>
-                    
+
                     <div class="text-center">
                         <p class="text-sm">20%</p>
                         <p class="text-xs">Pending</p>
                     </div>
                 </div>
-                
+
             </div>
 
-            <!-- Table -->
-            <div class="px-5 mb-4">
-                <h2 class="col-span-12 p-4 font-semibold text-sm bg-white rounded-lg">Newest Practices</h2>
-                <table class="w-full text-left table-auto bg-white">
-        
-                    <tbody>
-                        <tr class="bg-gray-200 rounded m-5">
-                            <td class="text-sm py-2 px-4">Practice Name</td>
-                            <td class="text-sm py-2 px-4">Tel No</td>
-                            <td class="text-sm py-2 px-4">Email</td>
-                            <td class="text-sm py-2 px-4">Date Created</td>
-                            <td class="text-sm py-2 px-4">Status</td>
-                            <td class="text-sm py-2 px-4">Actions</td>
+            <div class="overflow-x-auto p-5 lg:ml-5">
+                <table class="min-w-[600px] w-full text-left table-auto bg-white rounded-lg">
+                    <thead>
+                        <tr>
+                            <th colspan="6" class="text-sm py-2 px-4 pr-8 text-start">
+                                Newest Practices
+                            </th>
                         </tr>
+                        <tr class="bg-gray-200 rounded-xl m-20">
+                            <th class="text-sm py-2 px-4 min-w-[120px]">Practice Name</th>
+                            <th class="text-sm py-2 px-4 min-w-[120px]">Tel No</th>
+                            <th class="text-sm py-2 px-4">Email</th>
+                            <th class="text-sm py-2 px-4">Date Created</th>
+                            <th class="text-sm py-2 px-4">Status</th>
+                            <th class="text-sm py-2 px-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <tr class="mb-10">
                             <td class="text-sm py-2 px-4">Cape Fertility Clinic</td>
-                            <td class="text-sm py-2 px-4">+21 794 3956</td>
+                            <td class="text-sm py-2 px-4 min-w-[120px]">+21 794 3956</td>
                             <td class="text-sm py-2 px-4">info@capefertility.co.za</td>
                             <td class="text-sm py-2 px-4">2023/10/26</td>
                             <td class="text-sm py-2 px-4 flex items-center">
                                 <label class="relative inline-flex items-center cursor-pointer mr-2">
                                     <input type="checkbox" value="" class="sr-only peer">
-                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 
-                                                peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full 
-                                                peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] 
-                                                after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                    <div
+                                        class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600">
+                                    </div>
                                 </label>
                                 Active
                             </td>
-                            
                             <td class="text-sm py-2 px-4 relative">
-                                
-                                    <button class="mr-1">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    /
-                                    <button>
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                
+                                <button class="mr-1">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                                /
+                                <button>
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
-
                         </tr>
                         <tr>
                             <td class="text-sm py-2 px-4">Cape Fertility Clinic</td>
-                            <td class="text-sm py-2 px-4">+21 794 3956</td>
+                            <td class="text-sm py-2 px-4 min-w-[120px]">+21 794 3956</td>
                             <td class="text-sm py-2 px-4">info@capefertility.co.za</td>
                             <td class="text-sm py-2 px-4">2023/10/26</td>
                             <td class="text-sm py-2 px-4 flex items-center">
                                 <label class="relative inline-flex items-center cursor-pointer mr-2">
                                     <input type="checkbox" value="" class="sr-only peer">
-                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 
-                                                peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full 
-                                                peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] 
-                                                after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                    <div
+                                        class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600">
+                                    </div>
                                 </label>
                                 Active
                             </td>
                             <td class="text-sm py-2 px-4 relative">
-                                
-                                    <button class="mr-1">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    /
-                                    <button>
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                
+                                <button class="mr-1">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                                /
+                                <button>
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
-
                         </tr>
                         <tr>
                             <td class="text-sm py-2 px-4">Cape Fertility Clinic</td>
-                            <td class="text-sm py-2 px-4">+21 794 3956</td>
+                            <td class="text-sm py-2 px-4 min-w-[120px]">+21 794 3956</td>
                             <td class="text-sm py-2 px-4">info@capefertility.co.za</td>
                             <td class="text-sm py-2 px-4">2023/10/26</td>
                             <td class="text-sm py-2 px-4 flex items-center">
                                 <label class="relative inline-flex items-center cursor-pointer mr-2">
                                     <input type="checkbox" value="" class="sr-only peer">
-                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 
-                                                peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full 
-                                                peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] 
-                                                after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                    <div
+                                        class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600">
+                                    </div>
                                 </label>
                                 Active
                             </td>
                             <td class="text-sm py-2 px-4 relative">
-                                
-                                    <button class="mr-1">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    /
-                                    <button>
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                
+                                <button class="mr-1">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                                /
+                                <button>
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -385,49 +481,77 @@
                                 See All <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
                             </td>
                         </tr>
-                       
                     </tbody>
                 </table>
             </div>
-
+            
+            
         </div>
+
 
     </main>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
+
+            
+            function toggleDropdown(buttonId, dropdownId) {
+                const button = document.getElementById(buttonId);
+                const dropdown = document.getElementById(dropdownId);
+
+                button.addEventListener('click', function () {
+                    dropdown.classList.toggle('hidden');
+                });
+            }
+
+            function handleOutsideClick(event, button, dropdown) {
+                if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+
+            function toggleNotificationDropdown(button, dropdown) {
+                button.addEventListener('click', function () {
+                    dropdown.classList.toggle('hidden');
+                });
+            }
+
             const profileBtn = document.getElementById('profile-btn');
-            const profileDropdown = document.getElementById('profile-dropdown');
-    
-            profileBtn.addEventListener('click', function(event) {
-                event.stopPropagation();
-                profileDropdown.classList.toggle('hidden');
-                if (!notificationDropdown.classList.contains('hidden')){
-                    notificationDropdown.classList.add('hidden');
-                }
-            });
-    
-            // Notification Dropdown
-            const notificationBell = document.querySelector('.notification-bell').parentElement;
-            const notificationDropdown = document.getElementById('notification-dropdown');
-         
-            notificationBell.addEventListener('click', function(event) {
-                event.stopPropagation();
-                notificationDropdown.classList.toggle('hidden');
-                if (!profileDropdown.classList.contains('hidden')) {
-                    profileDropdown.classList.add('hidden');
-                }
+            const profileBtnDesktop = document.getElementById('profile-btn-desktop');
+
+            toggleDropdown('profile-btn', 'profile-dropdown');
+            toggleDropdown('profile-btn-desktop', 'profile-dropdown-desktop');
+
+            toggleNotificationDropdown(document.querySelector('.notification-bell'), document.getElementById('notification-dropdown'));
+            toggleNotificationDropdown(document.querySelector('.notification-bell-desktop'), document.getElementById('notification-dropdown-desktop'));
+
+            window.addEventListener('click', function (event) {
+                handleOutsideClick(event, document.getElementById('profile-btn'), document.getElementById('profile-dropdown'));
+                handleOutsideClick(event, document.getElementById('profile-btn-desktop'), document.getElementById('profile-dropdown-desktop'));
+                handleOutsideClick(event, document.querySelector('.notification-bell'), document.getElementById('notification-dropdown'));
+                handleOutsideClick(event, document.querySelector('.notification-bell-desktop'), document.getElementById('notification-dropdown-desktop'));
             });
 
-            document.addEventListener('click', function() {
-                if (!profileDropdown.classList.contains('hidden')) {
-                    profileDropdown.classList.add('hidden');
-                }
-                if (!notificationDropdown.classList.contains('hidden')) {
-                    notificationDropdown.classList.add('hidden');
-                }
+            // toggle sidebar mobile
+            const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
+
+            mobileSidebarToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('-translate-x-full');
+
             });
+
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('sidebar');
+
+            sidebarToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+
+
+
+
+
         });
     </script>
-
 </body>
+
 </html>
